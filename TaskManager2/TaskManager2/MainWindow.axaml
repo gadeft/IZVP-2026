@@ -1,0 +1,76 @@
+﻿<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TaskManager2"
+    xmlns:models="using:TaskManager2.Models"
+    xmlns:controls="using:TaskManager2.Controls"
+    x:Class="TaskManager2.MainWindow"
+    x:DataType="local:MainWindow"
+    Title="Менеджер завдань"
+    Width="600"
+    Height="550"
+    MinWidth="400"
+    MinHeight="350">
+
+    <StackPanel Margin="25" Spacing="15">
+
+        <TextBlock Text="Менеджер завдань"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"/>
+
+        <Grid ColumnDefinitions="*,Auto"
+              ColumnSpacing="10">
+
+            <TextBox x:Name="TaskInput"
+                     PlaceholderText="Введіть нове завдання..."
+                     VerticalAlignment="Center"/>
+
+            <Button Grid.Column="1"
+                    Content="Додати"
+                    Click="AddButton_Click"
+                    Padding="15,8"/>
+
+        </Grid>
+
+        <TextBlock Text="Список завдань"
+                   FontSize="18"
+                   FontWeight="SemiBold"/>
+
+        <ScrollViewer Height="300">
+
+            <ItemsControl ItemsSource="{Binding Tasks}">
+
+                <ItemsControl.ItemTemplate>
+
+                    <DataTemplate x:DataType="models:TodoItem">
+
+                        <StackPanel Spacing="5">
+
+                            <controls:TaskCard
+                                Task="{Binding}"
+                                StatusChanged="TaskCard_StatusChanged"/>
+
+                            <controls:TaskActionButton
+                                ButtonText="Видалити"
+                                Parameter="{Binding}"
+                                Clicked="DeleteTask_Click"/>
+
+                        </StackPanel>
+
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </ScrollViewer>
+
+        <TextBlock x:Name="CounterText"
+                   Text="Невиконаних завдань: 0"
+                   HorizontalAlignment="Center"
+                   FontSize="14"/>
+
+    </StackPanel>
+
+</Window>

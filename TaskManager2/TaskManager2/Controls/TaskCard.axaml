@@ -1,0 +1,31 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:TaskManager2.Controls"
+    x:Class="TaskManager2.Controls.TaskCard">
+
+    <Border BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="12"
+            Margin="5">
+
+        <StackPanel Spacing="8">
+
+            <TextBlock x:Name="TitleLabel"
+                       FontSize="16"
+                       FontWeight="Bold"/>
+
+            <TextBlock x:Name="StatusLabel"
+                       Text="Не виконано"
+                       Foreground="OrangeRed"/>
+
+            <controls:TaskActionButton
+                    ButtonText="Виконано"
+                    Clicked="ChangeStatus_Click"/>
+
+        </StackPanel>
+
+    </Border>
+
+</UserControl>

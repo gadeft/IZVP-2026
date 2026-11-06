@@ -1,0 +1,10 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="TaskManager2.Controls.TaskActionButton">
+
+    <Button x:Name="ActionButton"
+            Click="ActionButton_Click"
+            Padding="12,6"/>
+
+</UserControl>

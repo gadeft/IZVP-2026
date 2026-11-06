@@ -1,0 +1,63 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:models="using:TaskManager.Models"
+        x:Class="TaskManager.MainWindow"
+        Title="Менеджер завдань"
+        Width="550"
+        Height="500"
+        MinWidth="400"
+        MinHeight="350">
+
+    <StackPanel Margin="25" Spacing="15">
+
+        <TextBlock Text="Менеджер завдань"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"/>
+
+        <Grid ColumnDefinitions="*,Auto"
+              ColumnSpacing="10">
+
+            <TextBox x:Name="TaskInput"
+                     PlaceholderText="Введіть нове завдання..."
+                     VerticalAlignment="Center"/>
+
+            <Button Grid.Column="1"
+                    Content="Додати"
+                    Click="AddButton_Click"
+                    Padding="15,8"/>
+
+        </Grid>
+
+        <TextBlock Text="Список завдань"
+                   FontSize="18"
+                   FontWeight="SemiBold"/>
+
+        <ListBox x:Name="TaskList"
+         Height="260">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:TodoItem">
+
+                    <CheckBox Content="{Binding Title}"
+                              IsChecked="{Binding IsCompleted, Mode=TwoWay}"
+                              Padding="5"/>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+        <TextBlock x:Name="CounterText"
+                   Text="Невиконаних завдань: 0"
+                   FontSize="14"
+                   HorizontalAlignment="Center"/>
+
+        <Button Content="Видалити вибране завдання"
+                Click="DeleteButton_Click"
+                HorizontalAlignment="Stretch"
+                Padding="10"/>
+
+    </StackPanel>
+
+</Window>
